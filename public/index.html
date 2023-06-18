@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my wpm</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="icon" type="image/x_icon" href="favicon/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="server.js"></script> -->
+    <script defer src="script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap');
+    </style>
+</head>
+<body>
+
+    <section id="sec">
+        <h1>Words per Minute Counter</h1>
+        <div id="underline"></div>
+        <br>
+        <br>
+        <p id="instruction">Type the following text:</p>
+        <p id="text">hjkjhkj</p>
+        <button id="next-quote">Next Quote</button>
+        <div id="input-box">
+            <div id="error" class="light dark"></div>
+            <form action="">
+                <input type="text" name="" id="input", placeholder="Type Here">
+            </form>
+            <div id="progress"></div>
+        </div>
+        
+        <div id="stats-container">
+            <div class="stat">
+                <h4>WPM: </h4>
+                <p class="stat-p" id="wpm"></p>
+            </div>
+            <div class="stat">
+                <h4>Total word in the orginal text: </h4>
+                <p class="stat-p" id="original"></p>
+            </div>
+            <div class="stat">
+                <h4>Your Accuracy was: </h4>
+                <p class="stat-p" id="accuracy"></p>
+            </div>
+        </div>
+
+
+
+
+        <ul class="checklist"> To-do
+            <br>
+            <!-- the line below doesnt work with element.nextSibling; when there is a space between the tags
+            or a new line. It is safer to use element.nextElementSibling; -->
+            <li class="item" id="p1-parent">
+                <input type="checkbox" name="" id="" class="checkbox"><p id="p1">improve apperance</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>make it so that it recognizes accuracy, ideally as you type</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox" ><p>create a database to store your results</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>pull text from somewhere to practice the typing=</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>it would be nice to have a progress bar growing as you get closer to the end</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>comment the code</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>i might have to scrape the data if i don't want to do it all manually</p>
+            </li>
+            <li class="item">
+                <input type="checkbox" name="" id="" class="checkbox"><p>add a button to cycle through different texts in the json data</p>
+            </li>
+            <li>
+                <input type="checkbox" name="" id="mycheckbox">
+                <label for="mycheckbox" >i could make the checklist into a microservice or something 
+                like that and integrate it easily into other projects</label>
+            </li>
+            <li>
+                <input type="checkbox" name="" id="mycheckbox">
+                <label for="mycheckbox">create a local server and use sql</label>
+            </li>
+            <li>
+                <input type="checkbox" name="" id="mycheckbox">
+                <label for="mycheckbox">hello</label>
+            </li>
+            <li>
+                <input type="checkbox" name="" id="mycheckbox">
+                <label for="mycheckbox">hello</label>
+            </li>
+        </ul>    
+
+    </section>
+    
+</body>
+</html>
