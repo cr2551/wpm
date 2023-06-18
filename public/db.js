@@ -1,32 +1,37 @@
-// const nodeFetch = require('node-fetch');
+// use this file to test sql db functionality.
+
 const axios = require('axios');
-const { response } = require('express');
+// const { response, query } = require('express');
 
-let number = '5';  // cannot be int to be processed by axios
+if (false) {
+    let number = {number: 7};
 
-// modify test db by sending values to it via post request
-// nodeFetch('localhost:8080/submit', {
-//     method: 'POST',
-//     headers: {'Content-Type': 'text/plain'},
-//     body: number
-
-// })
-// .then(response => response.json())
-// .then(data => {
-//     console.log(data);
-// })
-// .catch(error => {
-//     console.error("foudn error", error);
-// });
+    axios.post('http://localhost:8080/submit', number)
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error("error encountered: ", error);
+    });
+}
 
 
+// query the database from here:
+let query;
+let table = "test";
+let describe = "describe test";
+let showTb = "SELECT * FROM test";
+let insert = "INSERT INTO test (id, average) VALUES (4, 8)";
 
 
+queryObject = {queryKey: showTb};
 
-axios.post('http://localhost:8080/submit', number)
-.then(response => {
-    console.log(response.data);
-})
-.catch(error => {
-    console.error("error encountered: ", error);
-})
+if (true) {
+    axios.post('http://localhost:8080/query', queryObject)
+    .then(response => {
+        response.log(response.data);
+    })
+    .catch(error => {
+        console.error("the following error was found:", error)
+    });
+}

@@ -1,8 +1,6 @@
-// const http = require('node:http')
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
 const mysql = require('mysql2');
 
 
@@ -20,17 +18,39 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/submit', (req, res) => {
     const value = req.body;
-    console.log("the value is: ", value);
-    console.log(typeof value) // returns string when i pass an int in 
-    // const query = `INSERT INTO test VALUES ('${value}')`;
-    // connection.query(query, (error, results, fields) => {
-    //     if (error) throw error;
-    //     console.log("wrote value: ", value); 
-    // })
-    // res.send("post request succesful");
-    // res.send("you sent the value", value);
+    console.log("the value is: ", value.number);
+    console.log(typeof value.number) // returns string when i pass an int in from fetch post request
+    let query = `INSERT INTO test VALUES ('${value.number}')`;
+    connection.query(query, (error, results, fields) => {
+        if (error) throw error;
+        console.log("wrote value: ", value.number); 
+    });
+
+    query = "SELECT * FROM test";
+    connection.query(query, (error, results, fields) => {
+    if (error) throw error;
+    console.log("table test looks like this:\n", results);
+    });
+
     res.send({message: "hello, this is a message from the post request"});
 });
+
+
+
+app.post('/query', (req, res) => {
+    let query = req.body.queryKey;
+    console.log(query);
+    connection.query(query, (error, results) => {
+        if (error) throw error;
+        console.log(results);
+    });
+    res.send({message: "query was executed"});
+});
+
+
+
+
+
 
 
 
@@ -44,28 +64,22 @@ app.listen(port, () => {
 
 
 // // Database stuff
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'dev',
-//     password: '',
-//     database: 'wpm'
-// });
-
-// // let query = "INSERT INTO test VALUES (1)";
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'dev',
+    password: '',
+    database: 'wpm'
+});
 
 
-// query = "SELECT * FROM test";
-// connection.query(query, (error, results, fields) => {
-//     if (error) throw error;
-//     console.log("table test looks like this:\n", results);
-// });
 
-// process.on('SIGINT', () => {
-//     connection.end((err) => {
-//       if (err) {
-//         console.error('Error closing database connection:', err);
-//       }
-//       console.log('Database connection closed');
-//       process.exit();
-//     });
-//   });
+
+process.on('SIGINT', () => {
+    connection.end((err) => {
+      if (err) {
+        console.error('Error closing database connection:', err);
+      }
+      console.log('Database connection closed');
+      process.exit();
+    });
+  });
