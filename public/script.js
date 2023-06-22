@@ -29,7 +29,7 @@ function calculateWPM(start, end, count) {
 
 function calculateAccuracy(correct, total) {
     const accuracy = (correct / total) * 100;
-    return accuracy.toFixed(2);
+    return accuracy.toFixed(2); // rounds up and down to specified digits
 }
 
 function startCounting() {
@@ -90,10 +90,11 @@ const wordCountElement = document.getElementById('original');
 const accuracyElement = document.getElementById('accuracy');
 function displayResults() {
     wpmElement.textContent = wpm;
-    wordCountElement.textContent = originalWordCount;
+    // wordCountElement.textContent = originalWordCount;
     accuracyElement.textContent = `${accuracy}%`;
 }
 
+// send your results to the DB in a post request
 async function postStats(accuracy) {
     console.log("inside posStats func");
     if (!accuracy) {
@@ -101,14 +102,15 @@ async function postStats(accuracy) {
         return;
     }
     console.log("the accuracy value is: ", accuracy)
-    const textData = 8;
     await fetch('/submit', {
         method: 'POST',
-        // headers: {'Content-Type': 'application/json'},
-        headers: {'Content-Type': 'text/plain'},
+        headers: {'Content-Type': 'application/json'},
+        // headers: {'Content-Type': 'text/plain'},
         // this works:
-        // body: JSON.stringify({'hello':9}),
-        body: textData
+        body: JSON.stringify({'wpm': wpm, 'accuracy': accuracy}),
+        // it doesnt accept a reg object, it has to be converted into json
+        // body: {'wpm': wpm, 'accuracy': accuracy}
+        // body: accuracy
 
     })
     .then(response => response.json())
@@ -147,7 +149,7 @@ function block() {
         originalWords = toWordList(text);
         originalWordCount = originalWords.length;
     });
-    const input = document.getElementById("input");
+    const input = document.getElementById("my-text-area");
     input.addEventListener('input', function(event) {
         const inputWords = toWordList(event.target.value);
         inputWordCount = inputWords.length;
@@ -156,7 +158,7 @@ function block() {
 
         const correctLetterCount = compareLetters(event.target.value, text);
         // width set to a max of 90% to fit with the other widths
-        const width = (correctLetterCount / text.length) * 90;
+        const width = (correctLetterCount / text.length) * 100;
         progressBar.style.width = `${width}%`;
         progressBar.style.height = '6px';
     });
@@ -165,74 +167,37 @@ function block() {
     input.addEventListener("keydown", function(event) {
         if (event.key == 'Enter') {
             event.preventDefault();
-            // input.setAttribute('value', '');
+         
             event.target.value = '';
             stopCounting();
             displayResults();
+            postStats(accuracy)
         };
     });
 
-    // input.addEventListener("blur", stopCounting);
+
 };
 
 
 
-// async function fetchData() {
-//     try {
-//         const response = await fetch("texts.json");
-//         jsonData = await response.json();
-//         numberOfQuotes = jsonData.text.length;
-//         console.log("inside fetchData func");
-//         block();
-   
+async function fetchData() {
+    try {
+        const response = await fetch("texts.json");
+        jsonData = await response.json();
+        numberOfQuotes = jsonData.text.length;
+        console.log("inside fetchData func");
+        block();
+    
 
-//     } 
-//     catch(error) {
-//         console.log("error loading json: ", error);
-//     }
-// };
-
-
-
-// async function fetchData() {
-//     try {
-//         console.log("inside fetchData func");
-//         const response = await fetch("texts.json");
-//         jsonData = await response.json();
-//         numberOfQuotes = jsonData.text.length;
-//         accuracy=5;
-//         await postStats(accuracy);
-
-//     } 
-//     catch(error) {
-//         console.log("error loading json: ", error);
-//     }
-// };
-
-// fetchData();
-
-postStats(5);
+    } 
+    catch(error) {
+        console.log("error loading json: ", error);
+    }
+};
 
 
-// ---->>>>>>>>>>>>>>>> make a checklist >>>>>>>>>>>>>>>>
-const c = document.getElementsByClassName('checkbox'); // returns HTMLCollection not an array
-// convert to array
-const array = [...c];
-// or:
-// const array = Array.from(c)
-array.forEach(element => {
-    element.checked = false;
-    element.addEventListener('click', function() {
-        const p = element.nextElementSibling;
-        // check if p has class 'completed' if so remove it, otherwise add it
-        const attributeNames = p.getAttributeNames();
-        if (attributeNames.includes('class'))  {
-            const classes = p.getAttribute('class').split(' ');
-            if (classes.includes('completed')) {
-                p.setAttribute('class', '');
-            }
-            else { p.setAttribute('class', 'completed')}
-        }
-        else {p.setAttribute('class', 'completed')}
-    });
-});
+fetchData();
+
+
+
+

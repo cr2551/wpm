@@ -17,22 +17,33 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.post('/submit', (req, res) => {
-    const value = req.body;
-    console.log("the value is: ", value.number);
-    console.log(typeof value.number) // returns string when i pass an int in from fetch post request
-    let query = `INSERT INTO test VALUES ('${value.number}')`;
+    const receivedValue = req.body;  // when you send an object you get an objet back
+    // convert
+//     const parsedValue = JSON.parse(req.body);
+//    console.log(parsedValue); 
+    console.log("the value is: ", receivedValue);
+    console.log(typeof receivedValue) // returns string when i pass an int in from fetch post request
+   
+   const wpm = receivedValue.wpm;
+   const accuracy = receivedValue.accuracy;
+   
+    let query = `INSERT INTO test VALUES ('${wpm}', '${accuracy}')`;
     connection.query(query, (error, results, fields) => {
         if (error) throw error;
-        console.log("wrote value: ", value.number); 
+        console.log("wrote value: ", typeof wpm); 
     });
 
     query = "SELECT * FROM test";
+    let queryResults;
     connection.query(query, (error, results, fields) => {
     if (error) throw error;
+    // the next line is not working figure out how to save the results for use outside this func
+    queryResults = results;
     console.log("table test looks like this:\n", results);
     });
 
-    res.send({message: "hello, this is a message from the post request"});
+    res.send({message: "hello, this is a message from the post request", 'receivedValue': receivedValue, 
+        'results': queryResults, 'type': typeof queryResults});
 });
 
 
@@ -45,6 +56,7 @@ app.post('/query', (req, res) => {
         console.log(results);
     });
     res.send({message: "query was executed"});
+    // res.send(500);  //it seems it cannot send a number, but it can send strings, and objects. if you send a number it thinks you are setting a status code
 });
 
 

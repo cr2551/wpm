@@ -17,21 +17,23 @@ if (false) {
 
 
 // query the database from here:
-let query;
 let table = "test";
-let describe = "describe test";
+let describe = `describe ${table}`;
 let showTb = "SELECT * FROM test";
 let insert = "INSERT INTO test (id, average) VALUES (4, 8)";
 
 
-queryObject = {queryKey: showTb};
+queryObject = {queryKey: describe};
 
 if (true) {
     axios.post('http://localhost:8080/query', queryObject)
     .then(response => {
-        response.log(response.data);
+        console.log(response.data);
+        // console.log(typeof response.data)
     })
     .catch(error => {
+        // if it returns an error, it is of type object
         console.error("the following error was found:", error)
     });
 }
+
