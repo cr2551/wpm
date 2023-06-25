@@ -4,6 +4,6 @@
 - [ ] learn how to debug js in vscode and dev tools
 - [ ] learn more about dev tools
 - [ ] learn to debug css in dev tools
-- [ ] design database
+- [ ] i should maje the text box dissapear when displaying the results.
 
   

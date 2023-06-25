@@ -15,7 +15,11 @@ const progressBar = document.getElementById('progress');
 
 
 function nextQuote(quoteIndex) {
-    const quote = jsonData.text[quoteIndex];
+    // this func will be called once when the page is loaded and everytime the "Next button is pressed"
+    const quote = jsonData.quotes[quoteIndex].quote;
+    const author = jsonData.quotes[quoteIndex].author;
+    document.getElementById("quote").textContent = quote;
+    document.getElementById("author").textContent = author;
     return quote;
 }
 
@@ -55,7 +59,6 @@ function compareWords(inputWords, originalWords) {
         if (inputWords[i] == originalWords[i]) {
             count++;
         }
-        
     }
     return count;
 }
@@ -129,9 +132,9 @@ function block() {
 // previously i had "DOMContentLoaded" and it wasn't working, it is probably the fact that i am using a live server extension
 // or maybe it was the fact that i was executing this block function inside a fetch function. 
 // solution: it is the fact that  block() runs inside fetch
-    text = nextQuote(0);
-    document.getElementById("text").textContent = text;
-    originalWords = toWordList(text);
+    quote = nextQuote(0);
+
+    originalWords = toWordList(quote);
     originalWordCount = originalWords.length;
    
 
@@ -144,9 +147,8 @@ function block() {
             quoteIndex = 0;
             
         };
-        text = nextQuote(quoteIndex);   
-        document.getElementById("text").textContent = text;
-        originalWords = toWordList(text);
+        quote = nextQuote(quoteIndex);   
+        originalWords = toWordList(quote);
         originalWordCount = originalWords.length;
     });
     const input = document.getElementById("my-text-area");
@@ -156,9 +158,9 @@ function block() {
         correctWordCount = compareWords(inputWords, originalWords);
 
 
-        const correctLetterCount = compareLetters(event.target.value, text);
+        const correctLetterCount = compareLetters(event.target.value, quote);
         // width set to a max of 90% to fit with the other widths
-        const width = (correctLetterCount / text.length) * 100;
+        const width = (correctLetterCount / quote.length) * 100;
         progressBar.style.width = `${width}%`;
         progressBar.style.height = '6px';
     });
@@ -184,7 +186,7 @@ async function fetchData() {
     try {
         const response = await fetch("texts.json");
         jsonData = await response.json();
-        numberOfQuotes = jsonData.text.length;
+        numberOfQuotes = jsonData.quotes.length;
         console.log("inside fetchData func");
         block();
     

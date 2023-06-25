@@ -1,3 +1,23 @@
-{"id": [1, 2], "text": ["Call me Ishmael.", "the watery part of the world.", "hello", "world", "brown fox", "lorem Ipsum, the quick brown fox jumps over the lazy dog. the waters of the world are great waves in the ocean"]
- }
+{
+"quotes": [
+{"quote": "Of my mother I have learned to be religious, and bountiful; and to forbear, not only to do, but to intend any evil; to content myself with a spare diet, and to fly all such excess as is incidental to great wealth.", "author": "Marcus Aurelius"},
+{"quote": "Consider the nature of all worldly sensible things; of those especially, which either ensnare by pleasure, or for their irksomeness are dreadful, or for their outward lustre and show are in great esteem and request, how vile and contemptible, how base and corruptible, how destitute of all true life and being they are.", "author": "Marcus Aurelius"},
+{"quote": "To be cheerful, and to stand in no need, either of other men's help or attendance, or of that rest and tranquillity, which thou must be beholding to others for. Rather like one that is straight of himself, or hath ever been straight, than one that hath been rectified.", "author": "Marcus Aurelius"},
+{"quote": "In the mind that is once truly disciplined and purged, thou canst not find anything, either foul or impure, or as it were festered: nothing that is either servile, or affected: no partial tie; no malicious averseness; nothing obnoxious; nothing concealed.", "author": "Marcus Aurelius"},
+{"quote": "Be not deceived; for thou shalt never live to read thy moral commentaries, nor the acts of the famous Romans and Grecians; nor those excerpta from several books; all which thou hadst provided and laid up for thyself against thine old age. Hasten therefore to an end, and giving over all vain hopes, help thyself in time if thou carest for thyself, as thou oughtest to do.", "author": "Marcus Aurelius"},
+
+
+{"quote": "A man asked me to write to Rome on his behalf who, as most people thought, had met with misfortune; for having been before wealthy and distinguished, he had afterwards lost all and was living here. So I wrote about him in a humble style. He however on reading the letter returned it to me, with the words: \"I asked for your help, not for your pity. No evil has happened unto me.\"", "author": "Epictetus"},
+{"quote": "True instruction is this:-to learn to wish that each thing should come to pass as it does. And how does it come to pass? As the Disposer has disposed it. Now He has disposed that there should be summer and winter, and plenty and dearth, and vice and virtue, and all such opposites, for the harmony of the whole.", "author": "Epictetus"},
+{"quote": "You must know that it is no easy thing for a principle to become a man's own, unless each day he maintain it and hear it maintained, as well as work it out in life.", "author": "Epictetus"},
+{"quote": "When we are invited to a banquet, we take what is set before us; and were one to call upon his host to set fish upon the table or sweet things, he would be deemed absurd. Yet in a word, we ask the Gods for what they do not give; and that, although they have given us so many things!", "author": "Epictetus"},
+
+
+
+
+{"quote": "It was the beginning of spring, the flowers were in bloom throughout the woods, the meadows, and the mountains; there were the buzzings of the bee, the warblings of the songsters, the frolics of the lambs. The young of the flock were skipping on the mountains, the bees flew humming through the meadows, and the songs of the birds resounded through the bushes.", "author": "Longus"},
+{"quote": "Achilles' baneful wrath resound, O Goddess, that impos'd Infinite sorrows on the Greeks, and many brave souls los’d. From breasts heroic; sent them far to that invisible cave That no light comforts; and their limbs to dogs and vultures gave", "author": "Homer"},
+{"quote": "Now to him who has a mind diseased anything is agreeable which is not opposed to him, but that which is equal or superior is hateful to him", "author": "Socrates"},
+{"quote": "But of beauty, I repeat again that we saw her there shining in company with the celestial forms; and coming to earth we find her here too, shining in clearness through the clearest aperture of sense.", "author": "Socrates"}
+ ]}
  

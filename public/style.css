@@ -35,7 +35,7 @@ h1 {
     width: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
-    background-color: rgba(164, 168, 157, 0.534);
+    background-color: rgba(164, 168, 157, 0.493);
     text-shadow: 2px 3px 2px rgba(88, 88, 87, 0.274);
 
 }
@@ -57,17 +57,24 @@ p#instruction {
 
 }
 
-#text {
-    
-    text-align: center;
-    word-wrap: normal;
-    margin: 0px 10% 20px;
+#quote-div {
+    background-color: rgba(240, 194, 151, 0);
+    /* min-height: vh; */
+    padding: 0 2rem;
+}
 
+#quote {
+    max-width: 70ch;
+}
+
+#dash {
+    padding-left: 2rem;
+    opacity: 65%;
 }
 
 #next-quote {
     font-family: monospace;
-    margin: 0 50% 30px;
+    margin: 15px auto;
     width: 100px;
     height: 30px;
     border-radius: 25px;
@@ -113,6 +120,7 @@ p#instruction {
     font-size: large;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.384);
 }
 
 
@@ -136,57 +144,27 @@ p#instruction {
 
 #stats-container {
     margin-top: 5%;
-    background-color: rgba(240, 248, 255, 0.541);
+    background-color: rgba(240, 248, 255, 0);
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat {
-    margin-left: 30px;
+    width: 30%;
     padding: 10px 0;
-    background-color: rgba(177, 65, 31, 0.425);
+    background-image: linear-gradient(rgba(134, 132, 132, 0.397), rgba(194, 187, 187, 0));
+    /* border: 1px solid rgba(0, 0, 0, 0.356); */
+    text-align: center;
+
+}
+
+.stat-p {
 }
 
 
-#circle {
-    box-sizing: border-box;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(23, 24, 24);
-    border-radius: 50px;
-  
-    /* text-align: center;
-    padding: 12px 0; */
-   position: relative;
-    
-}
 
-#symbol {
-    /* text-align: center; */
-    /* padding: 50%; */
-    color: white;
-    font-size: 50px;
-    font-weight: bolder;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 50%;
+
  
- 
-
-}
-
-#blur {
-    width: 100px;
-    height: 100px;
-    background-color: rgb(48, 109, 8);
-    filter: blur(50px);
-    position: absolute;
-    right: -50px;
-}
-
-
-
-
-
-
