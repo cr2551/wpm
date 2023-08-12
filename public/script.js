@@ -140,13 +140,14 @@ function block() {
 
     const button = document.getElementById("next-quote");
     button.addEventListener("click", function() {
-        if (quoteIndex < (numberOfQuotes - 1) ) {
-            quoteIndex++
+        console.log(quoteIndex);
+
+        prevIndex = quoteIndex;
+        quoteIndex = Math.floor(Math.random() * numberOfQuotes);
+        // if we happen to get the same quote run the function again to get a differetn quote
+        if (prevIndex === quoteIndex) {
+            quoteIndex = Math.floor(Math.random() * numberOfQuotes);
         }
-        else {
-            quoteIndex = 0;
-            
-        };
         quote = nextQuote(quoteIndex);   
         originalWords = toWordList(quote);
         originalWordCount = originalWords.length;
